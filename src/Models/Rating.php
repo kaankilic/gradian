@@ -33,6 +33,12 @@ class Rating extends Model
 	}
 
 	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\hasMany
+	 */
+	public function labels(){
+		return $this->hasMany(RatingLabels::class);
+	}
+	/**
 	 * @param Model $ratingable
 	 * @param $data
 	 * @param Model $author
