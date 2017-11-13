@@ -12,6 +12,7 @@ class CreateRatingsTable extends Migration
             $table->integer('rating');
             $table->integer('label_id');
             $table->integer('user_id');
+            $table->morphs('ratingable');
             $table->timestamps();
         });
     }

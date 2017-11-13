@@ -14,7 +14,7 @@ class RatingDegrees extends Model
 	/**
 	 * @var array
 	 */
-	protected $fillable = ['rating', 'label_id' , 'rating_id', 'user_id'];
+	protected $fillable = ['rating', 'label_id' , 'rating_id', 'user_id','ratingable_id','ratingable_type'];
 
 	/**
 	 * @var array

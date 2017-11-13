@@ -18,7 +18,9 @@ trait Gradable
     public function rating($ratingable_id){
         return $this->ratings()->where("ratingable_id",$ratingable_id)->firstOrFail();
     }
-
+    public function detailedRating(){
+        return $this->ra
+    }
     /**
      *
      * @return mix
