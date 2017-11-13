@@ -14,14 +14,11 @@ trait Gradable
     {
         return $this->morphMany(Rating::class, 'ratingable');
     }
+
     public function rating($ratingable_id){
         return $this->ratings()->where("ratingable_id",$ratingable_id)->firstOrFail();
     }
-    public function categoryAverages($ratingable_id){
-        $collection = [];
-        foreach ($this->rating($ratingable) as $rating) {
-        }
-    }
+
     /**
      *
      * @return mix

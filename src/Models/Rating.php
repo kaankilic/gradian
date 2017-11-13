@@ -29,7 +29,7 @@ class Rating extends Model
 	 */
 	public function author()
 	{
-		return $this->morphTo('author');
+		return $this->morphTo('user');
 	}
 
 	/**
@@ -37,25 +37,6 @@ class Rating extends Model
 	 */
 	public function labels(){
 		return $this->hasMany(RatingLabels::class);
-	}
-	/**
-	 * @param Model $ratingable
-	 * @param $data
-	 * @param Model $author
-	 *
-	 * @return static
-	 */
-	public function createRating(Model $ratingable, $data, Model $author)
-	{
-		$rating = new static();
-		$rating->fill(array_merge($data, [
-			'author_id' => $author->id,
-			'author_type' => get_class($author),
-		]));
-
-		$ratingable->ratings()->save($rating);
-
-		return $rating;
 	}
 
 	/**
@@ -69,11 +50,9 @@ class Rating extends Model
 	{
 		$rating = [
 			'author_id' => $author->id,
-			'author_type' => get_class($author),
 			"ratingable_id" => $ratingable->id,
 			"ratingable_type" => get_class($ratingable),
 		];
-
 		Rating::updateOrCreate($rating, $data);
 		return $rating;
 	}
